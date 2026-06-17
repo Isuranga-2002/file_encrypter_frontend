@@ -2,28 +2,24 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth';
 
 @Component({
-  selector: 'app-register',
-  standalone: true,
-  template: `
-    <button (click)="testRegister()">
-      Test Register
-    </button>
-  `
+  selector: 'app-verify-email',
+  imports: [],
+  templateUrl: './verify-email.html',
+  styleUrl: './verify-email.css',
 })
-export class Register {
-
-  constructor(
+export class VerifyEmail {
+    constructor(
     private authService: AuthService
   ) {}
 
-  async testRegister() {
+  async verify() {
 
     try {
 
       const result =
-        await this.authService.register(
+        await this.authService.confirmRegistration(
           'test@example.com',
-          'Password123!'
+          '123456'
         );
 
       console.log(result);
@@ -35,5 +31,4 @@ export class Register {
     }
 
   }
-
 }

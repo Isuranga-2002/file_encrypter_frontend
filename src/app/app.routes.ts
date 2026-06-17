@@ -4,6 +4,7 @@ import { Register } from './pages/register/register';
 import { Dashboard } from './pages/dashboard/dashboard';
 import { Upload } from './pages/upload/upload';
 import { Files } from './pages/files/files';
+import { VerifyEmail } from './pages/verify-email/verify-email';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,5 +17,7 @@ export const routes: Routes = [
 
   { path: 'upload', component: Upload },
 
-  { path: 'files', component: Files }
+  { path: 'files', component: Files },
+
+  {path: 'verify-email', component: VerifyEmail }
 ];
