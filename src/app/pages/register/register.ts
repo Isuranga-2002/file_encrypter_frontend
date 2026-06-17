@@ -22,7 +22,7 @@ export class Register {
 
       const result =
         await this.authService.register(
-          'test@example.com',
+          'dasunjayassri@gmail.com',
           'Password123!'
         );
 

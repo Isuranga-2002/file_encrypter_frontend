@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { signUp } from 'aws-amplify/auth';
+import { signIn } from 'aws-amplify/auth';
+import { signOut } from 'aws-amplify/auth';
 import { confirmSignUp } from 'aws-amplify/auth';
 
 @Injectable({
@@ -34,6 +36,20 @@ export class AuthService {
       confirmationCode: code
     });
 
+  }
+
+  async login(
+    email: string,
+    password: string
+  ) {
+    return await signIn({
+      username: email,
+      password
+    });
+  }
+
+  async logout() {
+    await signOut();
   }
 
 }
