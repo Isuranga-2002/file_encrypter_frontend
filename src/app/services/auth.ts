@@ -3,6 +3,7 @@ import { signUp } from 'aws-amplify/auth';
 import { signIn } from 'aws-amplify/auth';
 import { signOut } from 'aws-amplify/auth';
 import { confirmSignUp } from 'aws-amplify/auth';
+import { getCurrentUser } from 'aws-amplify/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,15 @@ export class AuthService {
 
   async logout() {
     await signOut();
+  }
+
+  async isAuthenticated(): Promise<boolean> {
+    try {
+      await getCurrentUser();
+      return true;
+    } catch {
+      return false;
+    }
   }
 
 }
