@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import { AuthService } from '../../services/auth';
 })
 export class Login {
     constructor(
-      private authService: AuthService
+      private authService: AuthService,
+      private router: Router
     ) {}
 
     async testLogin() {
@@ -20,6 +22,7 @@ export class Login {
           'Password123!'
         );
         console.log('Login Success:', result);
+        this.router.navigate(['./dashboard']);
       } catch(error) {
         console.error('Login Failed:', error);
       }

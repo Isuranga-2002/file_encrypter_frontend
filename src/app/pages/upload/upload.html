@@ -1,1 +1,11 @@
-<p>upload works!</p>
+<h1>Upload PDF</h1>
+
+<input type="file" accept=".pdf" (change)="onFileSelected($event)">
+
+<br><br>
+
+<input type="password" [(ngModel)]="password" placeholder="Encryption Password">
+
+<br><br>
+
+<button (click)="upload()">Encrypt PDF</button>
