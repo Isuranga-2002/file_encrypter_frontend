@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UploadService } from './../../services/upload'
 
 @Component({
   selector: 'app-upload',
@@ -8,6 +9,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './upload.css',
 })
 export class Upload {
+  constructor(
+    private uploadService: UploadService
+  ) {}
+
   selectedFile: File | null = null;
   password = '';
 
@@ -16,7 +21,26 @@ export class Upload {
   }
 
   upload(){
-    console.log(this.selectedFile);
-    console.log(this.password);
+    if (!this.selectedFile) {
+      return;
+    }
+
+    this.uploadService
+      .getUploadUrl(this.selectedFile.name)
+      .subscribe({
+
+        next: response => {
+
+          console.log(response);
+
+        },
+
+        error: error => {
+
+          console.error(error);
+
+        }
+
+      });
   }
 }
