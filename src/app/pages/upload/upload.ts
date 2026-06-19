@@ -20,7 +20,8 @@ export class Upload {
     this.selectedFile = event.target.files[0];
   }
 
-  upload(){
+  upload() {
+
     if (!this.selectedFile) {
       return;
     }
@@ -31,16 +32,30 @@ export class Upload {
 
         next: response => {
 
-          console.log(response);
+          const uploadUrl = response.uploadUrl;
+
+          this.uploadService
+            .uploadFileToS3(
+              uploadUrl,
+              this.selectedFile!
+            )
+            .subscribe({
+              next: () => {
+                console.log(
+                  'File uploaded successfully!'
+                );
+              },
+
+              error: error => {
+                console.error(error);
+              }
+            });
 
         },
-
         error: error => {
-
           console.error(error);
-
         }
-
       });
+
   }
 }

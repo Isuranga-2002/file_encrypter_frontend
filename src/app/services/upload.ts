@@ -19,4 +19,18 @@ export class UploadService {
     );
 
   }
+
+  uploadFileToS3(uploadUrl: string,file: File) {
+
+    return this.http.put(
+      uploadUrl,
+      file,
+      {
+        headers: {
+          'Content-Type': file.type || 'application/pdf'
+        }
+      }
+    );
+
+  }
 }
