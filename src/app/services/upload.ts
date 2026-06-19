@@ -33,4 +33,10 @@ export class UploadService {
     );
 
   }
+
+  getFiles() {
+    return this.http.get<any[]>(
+      'https://1yrh87a5fa.execute-api.ap-south-1.amazonaws.com/Prod/files'
+    );
+  }
 }

@@ -1,1 +1,19 @@
-<p>files works!</p>
+<h2>My Files</h2>
+
+<p>Total Files: {{ files.length }}</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{ file.fileName }}</td>
+      <td>{{ file.status }}</td>
+    </tr>
+  </tbody>
+</table>
