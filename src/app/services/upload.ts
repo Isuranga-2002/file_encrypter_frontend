@@ -39,4 +39,12 @@ export class UploadService {
       'https://1yrh87a5fa.execute-api.ap-south-1.amazonaws.com/Prod/files'
     );
   }
+
+  getDownloadUrl(jobId: string) {
+
+    return this.http.get<any>(
+      `${this.apiUrl}/download/${jobId}`
+    );
+
+  }
 }

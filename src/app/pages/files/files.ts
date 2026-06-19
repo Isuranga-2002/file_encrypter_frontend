@@ -35,4 +35,29 @@ export class Files implements OnInit {
       }
     });
   }
+
+  downloadFile(jobId: string) {
+
+    this.uploadService
+        .getDownloadUrl(jobId)
+        .subscribe({
+
+          next: (response) => {
+
+            window.open(
+              response.downloadUrl,
+              '_blank'
+            );
+
+          },
+
+          error: (error) => {
+
+            console.error(error);
+
+          }
+
+        });
+
+  }
 }

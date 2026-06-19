@@ -7,6 +7,7 @@
     <tr>
       <th>File Name</th>
       <th>Status</th>
+      <th>Action</th>
     </tr>
   </thead>
 
@@ -14,6 +15,23 @@
     <tr *ngFor="let file of files">
       <td>{{ file.fileName }}</td>
       <td>{{ file.status }}</td>
+      <td>
+
+        @if (file.status === 'COMPLETED') {
+
+          <button
+            (click)="downloadFile(file.jobId)"
+          >
+            Download
+          </button>
+
+        } @else {
+
+          Processing...
+
+        }
+
+      </td>
     </tr>
   </tbody>
 </table>
