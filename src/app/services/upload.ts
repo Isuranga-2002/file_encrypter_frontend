@@ -11,11 +11,16 @@ export class UploadService {
     private http: HttpClient
   ) {}
 
-  getUploadUrl(filename: string) {
+  getUploadUrl(
+    filename: string, userId: string
+  ) {
 
     return this.http.post<any>(
       `${this.apiUrl}/upload-url`,
-      { filename }
+      {
+        filename,
+        userId
+      }
     );
 
   }
@@ -34,9 +39,9 @@ export class UploadService {
 
   }
 
-  getFiles() {
+  getFiles(userId: string) {
     return this.http.get<any[]>(
-      'https://1yrh87a5fa.execute-api.ap-south-1.amazonaws.com/Prod/files'
+      `https://1yrh87a5fa.execute-api.ap-south-1.amazonaws.com/Prod//files?userId=${userId}`
     );
   }
 

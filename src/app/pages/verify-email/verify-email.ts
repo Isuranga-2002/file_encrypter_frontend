@@ -18,8 +18,8 @@ export class VerifyEmail {
 
       const result =
         await this.authService.confirmRegistration(
-          'dasunjayassri@gmail.com',
-          '636806'
+          'dsisuranga@std.foc.sab.ac.lk',
+          '492084'
         );
 
       console.log(result);

@@ -18,8 +18,8 @@ export class Login {
 
       try {
         const result = await this.authService.login(
-          'dasunjayassri@gmail.com',
-          'Password123!'
+          'dsisuranga@std.foc.sab.ac.lk',
+          'ASDqwe!@#123'
         );
         console.log('Login Success:', result);
         this.router.navigate(['./dashboard']);

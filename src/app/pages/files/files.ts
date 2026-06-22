@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core'; // 1. Import CDR
 import { CommonModule } from '@angular/common';
 import { UploadService } from '../../services/upload';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-files',
@@ -15,15 +16,19 @@ export class Files implements OnInit {
 
   constructor(
     private uploadService: UploadService,
-    private cdr: ChangeDetectorRef // 2. Inject it
+    private cdr: ChangeDetectorRef,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.loadFiles();
   }
 
-  loadFiles(): void {
-    this.uploadService.getFiles().subscribe({
+  async loadFiles(): Promise<void> {
+
+    const userId = await this.authService.getCurrentUserId();
+
+    this.uploadService.getFiles(userId).subscribe({
       next: (data: any[]) => {
         this.files = data;
         

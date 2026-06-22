@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UploadService } from './../../services/upload'
-
+import { AuthService } from '../../services/auth';
 @Component({
   selector: 'app-upload',
   imports: [FormsModule],
@@ -10,7 +10,8 @@ import { UploadService } from './../../services/upload'
 })
 export class Upload {
   constructor(
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private authService: AuthService
   ) {}
 
   selectedFile: File | null = null;
@@ -20,14 +21,15 @@ export class Upload {
     this.selectedFile = event.target.files[0];
   }
 
-  upload() {
+  async upload() {
+
+     const userId = await this.authService.getCurrentUserId();
 
     if (!this.selectedFile) {
       return;
     }
-
     this.uploadService
-      .getUploadUrl(this.selectedFile.name)
+      .getUploadUrl(this.selectedFile.name, userId )
       .subscribe({
 
         next: response => {

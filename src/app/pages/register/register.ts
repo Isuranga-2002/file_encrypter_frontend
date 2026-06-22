@@ -22,8 +22,8 @@ export class Register {
 
       const result =
         await this.authService.register(
-          'dasunjayassri@gmail.com',
-          'Password123!'
+          'dsisuranga@std.foc.sab.ac.lk',
+          'ASDqwe!@#123'
         );
 
       console.log(result);

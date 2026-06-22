@@ -62,4 +62,12 @@ export class AuthService {
     }
   }
 
+  async getCurrentUserId(): Promise<string> {
+
+    const user = await getCurrentUser();
+
+    return user.userId;
+
+  }
+
 }
