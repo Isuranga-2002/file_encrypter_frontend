@@ -1,11 +1,14 @@
-<h1>Dashboard</h1>
+<main class="app-page dashboard-page">
+  <section class="panel dashboard-panel">
+    <h1>Dashboard</h1>
 
-<a routerLink="/upload">Upload PDF</a>
-<br><br>
+    <nav class="dashboard-actions" aria-label="Dashboard actions">
+      <a routerLink="/upload">Upload PDF</a>
+      <a routerLink="/files">My Files</a>
+    </nav>
 
-<a routerLink="/files">My Files</a>
-<br><br>
-
-<button (click)="Logout()">
-  Logout
-</button>
+    <button class="secondary-button" (click)="Logout()">
+      Logout
+    </button>
+  </section>
+</main>

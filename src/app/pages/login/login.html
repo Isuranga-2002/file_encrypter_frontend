@@ -1,18 +1,22 @@
-<!-- <p>login works!</p>
+<main class="auth-page">
+  <section class="auth-card">
+    <!-- <p>login works!</p>
 
 <button (click)="testLogin()">Test Login</button>
 
 <button (click)="Logout()">Logout</button> -->
 
-<h1>Login</h1>
-<form>
-    <input [(ngModel)]="email" name="email" type="text" placeholder="Email">
-    <input [(ngModel)]="password" name="password" type="password" placeholder="Password">
-    <button type="button" (click)="Login()">Login</button>
-</form>
+    <h1>Login</h1>
+    <form>
+      <input [(ngModel)]="email" name="email" type="text" placeholder="Email">
+      <input [(ngModel)]="password" name="password" type="password" placeholder="Password">
+      <button type="button" (click)="Login()">Login</button>
+    </form>
 
-@if (errorMessage) {
-  <p style="color: red;">{{ errorMessage }}</p>
-}
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
 
-<p>Don't have an account? <a routerLink="/register">click here</a> to register.</p>
+    <p class="auth-switch">Don't have an account? <a routerLink="/register">click here</a> to register.</p>
+  </section>
+</main>

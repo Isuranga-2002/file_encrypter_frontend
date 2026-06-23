@@ -1,12 +1,16 @@
-<h1>Register</h1>
-<form>
-    <input [(ngModel)]="email" name="email" type="text" placeholder="Email">
-    <input [(ngModel)]="password" name="password" type="password" placeholder="Password">
-    <button type="button" (click)="register()">Register</button>
-</form>
+<main class="auth-page">
+  <section class="auth-card">
+    <h1>Register</h1>
+    <form>
+      <input [(ngModel)]="email" name="email" type="text" placeholder="Email">
+      <input [(ngModel)]="password" name="password" type="password" placeholder="Password">
+      <button type="button" (click)="register()">Register</button>
+    </form>
 
-@if (errorMessage) {
-  <p style="color: red;">{{ errorMessage }}</p>
-}
+    @if (errorMessage) {
+      <p class="error-message">{{ errorMessage }}</p>
+    }
 
-<p>Already have an account? <a routerLink="/login">click here</a> to login.</p>
+    <p class="auth-switch">Already have an account? <a routerLink="/login">click here</a> to login.</p>
+  </section>
+</main>

@@ -1,37 +1,42 @@
-<h2>My Files</h2>
+<main class="app-page files-page">
+  <section class="panel files-panel">
+    <header class="files-header">
+      <h2>My Files</h2>
+      <p>Total Files: {{ files.length }}</p>
+    </header>
 
-<p>Total Files: {{ files.length }}</p>
+    <div class="table-wrap">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>File Name</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-<table border="1">
-  <thead>
-    <tr>
-      <th>File Name</th>
-      <th>Status</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let file of files">
-      <td>{{ file.fileName }}</td>
-      <td>{{ file.status }}</td>
-      <td>
-
-        @if (file.status === 'COMPLETED') {
-
-          <button
-            (click)="downloadFile(file.jobId)"
-          >
-            Download
-          </button>
-
-        } @else {
-
-          Processing...
-
-        }
-
-      </td>
-    </tr>
-  </tbody>
-</table>
+        <tbody>
+          <tr *ngFor="let file of files">
+            <td>{{ file.fileName }}</td>
+            <td>
+              <span class="status-pill" [class.status-ready]="file.status === 'COMPLETED'">
+                {{ file.status }}
+              </span>
+            </td>
+            <td>
+              @if (file.status === 'COMPLETED') {
+                <button
+                  (click)="downloadFile(file.jobId)"
+                >
+                  Download
+                </button>
+              } @else {
+                <span class="muted">Processing...</span>
+              }
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

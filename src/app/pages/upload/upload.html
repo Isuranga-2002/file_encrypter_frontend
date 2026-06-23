@@ -1,11 +1,13 @@
-<h1>Upload PDF</h1>
+<main class="app-page upload-page">
+  <section class="panel upload-panel">
+    <h1>Upload PDF</h1>
 
-<input type="file" accept=".pdf" (change)="onFileSelected($event)">
+    <div class="form-stack">
+      <input type="file" accept=".pdf" (change)="onFileSelected($event)">
 
-<br><br>
+      <input type="password" [(ngModel)]="password" placeholder="Encryption Password">
 
-<input type="password" [(ngModel)]="password" placeholder="Encryption Password">
-
-<br><br>
-
-<button (click)="upload()">Encrypt PDF</button>
+      <button (click)="upload()">Encrypt PDF</button>
+    </div>
+  </section>
+</main>

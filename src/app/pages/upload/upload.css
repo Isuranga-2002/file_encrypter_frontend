@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.upload-page {
+  max-width: 620px;
+}
+
+.upload-panel {
+  padding: 2rem;
+}
+
+input[type="file"] {
+  border-style: dashed;
+  background: var(--color-surface-muted);
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .upload-panel {
+    padding: 1.25rem;
+  }
+}
