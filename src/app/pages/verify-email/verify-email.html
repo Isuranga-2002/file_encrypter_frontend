@@ -1,3 +1,15 @@
-<p>verify-email works!</p>
+<!-- <p>verify-email works!</p>
 
-<button (click)="verify()">Verify</button>
+<button (click)="verify()">Verify</button> -->
+
+<h1>Verify Your Email</h1>
+
+<form>
+    <input [(ngModel)]="email" type="email" name="email" placeholder="Email">
+    <input [(ngModel)]="otp" type="string" name="otp" placeholder="OTP">
+    <button (click)="verify()" type="button">Verify</button>
+</form>
+
+@if (errorMessage) {
+  <p style="color: red;">{{ errorMessage }}</p>
+}

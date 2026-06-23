@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth';
   selector: 'app-upload',
   imports: [FormsModule],
   templateUrl: './upload.html',
-  styleUrl: './upload.css',
+  styleUrl: './upload.css'
 })
 export class Upload {
   constructor(

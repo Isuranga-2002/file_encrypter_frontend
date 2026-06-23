@@ -6,13 +6,14 @@ import { Upload } from './pages/upload/upload';
 import { Files } from './pages/files/files';
 import { VerifyEmail } from './pages/verify-email/verify-email';
 import { authGuard } from './guards/auth-guard';
+import { guestGuard } from './guards/guest-guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
-  { path: 'login', component: Login },
+  { path: 'login', component: Login, canActivate: [guestGuard] },
 
-  { path: 'register', component: Register },
+  { path: 'register', component: Register, canActivate: [guestGuard] },
 
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
 
