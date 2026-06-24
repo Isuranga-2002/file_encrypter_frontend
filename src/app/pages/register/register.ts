@@ -15,6 +15,7 @@ export class Register {
   email = '';
   password = '';
   errorMessage = '';
+  confirmPassword = '';
 
   constructor(
     private authService: AuthService,
@@ -38,19 +39,35 @@ export class Register {
   //   }
   // }
 
-  async register(){
+async register(): Promise<void> {
+    // 1. Clear any previous error messages
     this.errorMessage = '';
-    try{
-      const result = await this.authService.register(this.email, this.password);
-      console.log(result);
-      this.router.navigate(['/verify-email']);
-    } catch(error: any){
-      console.error(error);
-      this.errorMessage = error.message || 'An error occurred during registration. Please try again.';
-      this.cdr.detectChanges();
+
+    // 2. Validate input fields
+    if (!this.email || !this.password) {
+      this.errorMessage = 'Email and password cannot be empty.';
+      return; // Stop execution
     }
 
-  // console.log(this.email);
-  // console.log(this.password);
+    if (this.password !== this.confirmPassword) {
+      this.errorMessage = 'Passwords do not match.';
+      return; // Stop execution
+    }
+
+    // 3. Proceed with API registration
+    try {
+      const result = await this.authService.register(this.email, this.password);
+      console.log('Registration successful:', result);
+      
+      this.router.navigate(['/verify-email']);
+    } catch (error: any) {
+      console.error('Registration failed:', error);
+      
+      // Extract the error message or provide a fallback
+      this.errorMessage = error.message || 'An error occurred during registration. Please try again.';
+      
+      // Manually trigger change detection to ensure the UI updates with the error
+      this.cdr.detectChanges();
+    }
   }
 }
