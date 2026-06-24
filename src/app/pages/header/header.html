@@ -1,0 +1,36 @@
+
+<header class="site-header">
+  <div class="header-shell">
+    <!-- Logo and Navigation -->
+    <div class="brand-nav">
+      <a class="logo-link" routerLink="/dashboard" aria-label="Go to dashboard">
+        <img src="full_logo.png" alt="Logo" />
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a routerLink="/dashboard" routerLinkActive="active">
+          Dashboard
+        </a>
+
+        <a routerLink="/upload" routerLinkActive="active">
+          Upload
+        </a>
+
+        <a routerLink="/files" routerLinkActive="active">
+          Files
+        </a>
+      </nav>
+    </div>
+
+    <!-- Profile and Logout -->
+    <div class="header-actions">
+      <button class="avatar-button" type="button" aria-label="User profile">
+        {{ userInitial }}
+      </button>
+
+      <button class="logout-button" type="button" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</header>

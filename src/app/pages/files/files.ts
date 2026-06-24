@@ -2,11 +2,12 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UploadService } from '../../services/upload';
 import { AuthService } from '../../services/auth';
+import { Header } from './../header/header';
 
 @Component({
   selector: 'app-files',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Header],
   templateUrl: './files.html',
   styleUrls: ['./files.css']
 })

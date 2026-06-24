@@ -2,16 +2,19 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UploadService } from './../../services/upload'
 import { AuthService } from '../../services/auth';
+import { Header } from './../header/header';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-upload',
-  imports: [FormsModule],
+  imports: [FormsModule, Header],
   templateUrl: './upload.html',
   styleUrl: './upload.css'
 })
 export class Upload {
   constructor(
     private uploadService: UploadService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   selectedFile: File | null = null;
@@ -46,6 +49,7 @@ export class Upload {
                 console.log(
                   'File uploaded successfully!'
                 );
+                this.router.navigate(['/files']);
               },
 
               error: error => {
